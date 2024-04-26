@@ -1,0 +1,38 @@
+[
+ {
+    "order_id": 1,
+    "items": [
+      {"product": "Ananas", "customer": "Marcin"},
+      {"product": "Ananas", "customer": "Marcin"},
+      {"product": "Mango", "customer": "Marcin"},
+      {"product": "Jabłko", "customer": "Marcin"},
+      {"product": "Jabłko", "customer": "Marcin"},
+      {"product": "Jabłko", "customer": "Marcin"},
+      {"product": "Truskawki", "customer": "Marcin"}
+    ]
+ },
+ {
+    "order_id": 2,
+    "items": [
+      {"product": "Ananas", "customer": "Piotr"},
+      {"product": "Jabłko", "customer": "Piotr"},
+      {"product": "Mango", "customer": "Piotr"},
+      {"product": "Jajka", "customer": "Piotr"},
+      {"product": "Kurczak", "customer": "Piotr"},
+      {"product": "Kurczak", "customer": "Piotr"},
+      {"product": "Ser", "customer": "Piotr"},
+      {"product": "Ser", "customer": "Piotr"},
+      {"product": "Ser", "customer": "Piotr"}
+    ]
+ },
+ {
+    "order_id": 3,
+    "items": [
+      {"product": "Woda", "customer": "Kasia"},
+      {"product": "Szpinak", "customer": "Kasia"},
+      {"product": "Ser", "customer": "Kasia"},
+      {"product": "Mango", "customer": "Kasia"},
+      {"product": "Jajka", "customer": "Kasia"}
+    ]
+ }
+]
