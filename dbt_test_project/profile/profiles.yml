@@ -1,0 +1,12 @@
+dbt_test_project:
+  outputs:
+    dev:
+      dbname: airflow
+      host: postgres
+      pass: airflow
+      port: 5432
+      schema: airflow
+      threads: 4
+      type: postgres
+      user: airflow
+  target: dev

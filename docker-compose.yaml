@@ -76,6 +76,9 @@ x-airflow-common:
     - ${AIRFLOW_PROJ_DIR:-.}/config:/opt/airflow/config
     - ${AIRFLOW_PROJ_DIR:-.}/plugins:/opt/airflow/plugins
     - ${AIRFLOW_PROJ_DIR:-.}/test_files:/opt/airflow/test_files
+    - ${AIRFLOW_PROJ_DIR:-.}/dbt_test_project:/opt/airflow/dbt_test_project
+    - ${AIRFLOW_PROJ_DIR:-.}/dbt_test_project/profile/profiles.yml:/home/airflow/.dbt/profiles.yml
+    - ${AIRFLOW_PROJ_DIR:-.}/dbt_test_project/dbt_project.yml:/home/airflow/dbt_project.yml
   user: "${AIRFLOW_UID:-50000}:0"
   depends_on:
     &airflow-common-depends-on
@@ -97,6 +100,26 @@ services:
       retries: 5
       start_period: 5s
     restart: always
+
+  adminer:
+    image: wodby/adminer:latest
+    container_name: adminer_dbt
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "5"
+        max-size: "10m"
+    ports:
+      - "32767:9000"
+    environment:
+      - ADMINER_DEFAULT_DB_DRIVER=psql
+      - ADMINER_DEFAULT_DB_HOST=postgres
+      - ADMINER_DEFAULT_DB_NAME=airflow_db
+    healthcheck:
+      test: [ "CMD", "nc", "-z", "adminer", "9000" ]
+      timeout: 45s
+      interval: 10s
+      retries: 10
 
   airflow-webserver:
     <<: *airflow-common
